@@ -24,7 +24,7 @@ describe EmailDoc::Document do
     it 'should render document' do
       document_patterns = [
         %r<# #{described_class}>,
-        %r<## #{example.description}>,
+        %r<## #{RSpec.current_example.description}>,
         %r<To: \["#{to}"\]>,
         %r<From: \["from@example.org"\]>,
         %r<Reply to: \["noreply@example.org"\]>,
