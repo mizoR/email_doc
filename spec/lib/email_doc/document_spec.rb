@@ -18,13 +18,15 @@ describe EmailDoc::Document do
 
   let(:mail) { mailer_class.welcome(to) }
 
+  let(:ex) { RSpec.current_example }
+
   describe '#render' do
-    subject { described_class.new(self, mail).render }
+    subject { described_class.new(self, mail, ex).render }
 
     it 'should render document' do
       document_patterns = [
         %r<# #{described_class}>,
-        %r<## #{example.description}>,
+        %r<## #{ex.description}>,
         %r<To: \["#{to}"\]>,
         %r<From: \["from@example.org"\]>,
         %r<Reply to: \["noreply@example.org"\]>,
